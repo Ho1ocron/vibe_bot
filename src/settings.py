@@ -17,7 +17,6 @@ if DOTENV_PATH.exists():
 # * Telegram Config
 
 TOKEN = getenv('TOKEN')
-print(TOKEN)
 ADMIN_IDS = literal_eval(getenv('ADMIN_IDS'))
 
 # * Database Config
