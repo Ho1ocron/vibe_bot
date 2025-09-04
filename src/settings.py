@@ -46,6 +46,10 @@ if DEBUG:
 async def get_maps_path(map_name: str) -> str:
     with open(PATHES_FILE, encoding="utf-8") as f:
         data = json.load(f)
+        if map_name[0] == "Р":
+            map_name = "P" + map_name[1:]
+        if map_name[0] == "С":
+            map_name = "C" + map_name[1:]
 
     # Return the correct map path or raise an error if not found
     try:
