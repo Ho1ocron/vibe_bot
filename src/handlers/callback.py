@@ -11,7 +11,7 @@ router = Router(name=__name__)
 
 
 @router.callback_query(F.data == "settings")
-async def where_to_go(callback: CallbackQuery):
+async def open_settings(callback: CallbackQuery):
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text="Назад", callback_data="back")]
