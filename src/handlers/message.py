@@ -1,18 +1,19 @@
 from aiogram import F, Router
 from aiogram.enums.chat_type import ChatType
 from aiogram.fsm.context import FSMContext
-
 from aiogram.filters import(
     Command, 
     CommandStart, 
     CommandObject,
 )
-
 from aiogram.types import(
     Message, 
     InlineKeyboardButton, 
     InlineKeyboardMarkup,
+    FSInputFile
 )
+from states import WaitForText
+from settings import get_maps_path
 import logging
 
 
@@ -43,7 +44,20 @@ async def start(message: Message) -> None:
             f"Пожалуйста, выбери действие: "
         ), reply_markup=keyboard
     )
-"""
-[кнопка, кнопка],
-[кнопка]
-"""
+
+
+@router.message(WaitForText.waiting_for_text)
+async def process_user_text(message: Message, state: FSMContext):
+    user_text = message.text.strip()
+
+    try:
+        photo_path = await get_maps_path(user_text)
+        photo = FSInputFile(photo_path)
+
+        await message.answer_photo(photo=photo)
+
+        # await message.answer(f"✅ Вы ввели: {user_text}")
+    except (ValueError, FileNotFoundError) as e:
+        await message.answer(f"Ошибка: {e}")
+
+    await state.clear()

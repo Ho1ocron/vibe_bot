@@ -5,7 +5,7 @@ from aiogram.types import(
     InlineKeyboardButton, 
     InlineKeyboardMarkup,
 )
-
+from states import WaitForText
 
 router = Router(name=__name__) 
 
@@ -22,3 +22,9 @@ async def open_settings(callback: CallbackQuery):
         inline_message_id=callback.inline_message_id,
         reply_markup=keyboard
     )
+
+
+@router.callback_query(F.data == "go")
+async def find_auditory(callback: CallbackQuery, state: FSMContext) -> None:
+    await callback.message.answer("Пожалуйста, введите номер аудитории:")
+    await state.set_state(WaitForText.waiting_for_text)
