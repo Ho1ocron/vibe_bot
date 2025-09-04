@@ -106,16 +106,21 @@ async def where_to_go(callback: CallbackQuery):
     )
 
 @router.callback_query(F.data == "settings")
-async def open_settings(callback: CallbackQuery):
+async def where_to_go(callback: CallbackQuery):
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="Назад", callback_data="back")]
+            [
+            InlineKeyboardButton(text="⚙️ Достижений", callback_data="sach"), 
+            InlineKeyboardButton(text="Изменить группу", callback_data="group")
+            ],
+            [InlineKeyboardButton(text="Назад", callback_data="backmain")]
         ]
     )
-    await callback.message.edit_text("Настройки пока недоступны.", )
-    await callback.message.edit_reply_markup(
+
+    await callback.message.edit_text(
         inline_message_id=callback.inline_message_id,
-        reply_markup=keyboard
+        reply_markup=keyboard,
+        text="Ты попал в настройки \n Тут мы можешь ..."
     )
 
 
