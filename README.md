@@ -4,13 +4,7 @@ python3 -m venv .venv
 . ./.venv/bin/activate
 ```
 ---
-Для мака
-```
-brew install redis
-brew services start redis
-```
----
-Для линукса
+Redis для линукса
 ```
 sudo apt update && sudo apt install redis-server -y
 sudo systemctl enable redis-server
