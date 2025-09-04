@@ -16,13 +16,12 @@ async def main() -> None:
     )
     redis_client = redis.Redis(host="localhost", port=6379, db=0)
     storage = RedisStorage(redis_client)
-    dp = Dispatcher(storage=storage)
+    dp = Dispatcher()
     
     dp.include_routers(
         handlers.message_router,
         handlers.callback_router,
         handlers.admin_router,
-
     )
     
     await dp.start_polling(bot)

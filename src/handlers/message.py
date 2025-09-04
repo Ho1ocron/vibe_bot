@@ -28,7 +28,10 @@ async def start(message: Message) -> None:
 
     keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
-        [InlineKeyboardButton(text="Куда идти?", callback_data="go"), InlineKeyboardButton(text="Достижения", callback_data="achievements")],
+        [
+            InlineKeyboardButton(text="Куда идти?", callback_data="go"), 
+            InlineKeyboardButton(text="Достижения", callback_data="achievements")
+        ],
         [InlineKeyboardButton(text="Настройки", callback_data="settings")]
     ]
 )
@@ -40,3 +43,7 @@ async def start(message: Message) -> None:
             f"Пожалуйста, выбери действие: "
         ), reply_markup=keyboard
     )
+"""
+[кнопка, кнопка],
+[кнопка]
+"""
