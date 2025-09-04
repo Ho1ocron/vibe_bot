@@ -157,6 +157,21 @@ async def where_to_go(callback: CallbackQuery):
         reply_markup=keyboard,
         text="В данный момент эта функция на стадии разработки..."
     )
+
+
+@router.callback_query(F.data == "settings")
+async def where_to_go(callback: CallbackQuery):
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+            InlineKeyboardButton(text="⚙️ Достижений", callback_data="sach"), 
+            InlineKeyboardButton(text="Изменить группу", callback_data="group")
+            ],
+            [InlineKeyboardButton(text="Назад", callback_data="backmain")]
+        ]
+    )
+
+
 @router.callback_query(F.data == "ra1")
 async def where_to_go(callback: CallbackQuery):
     keyboard = InlineKeyboardMarkup(
