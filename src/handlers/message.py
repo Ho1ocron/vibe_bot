@@ -45,9 +45,15 @@ async def start(message: Message) -> None:
         ), reply_markup=keyboard
     )
 
-
 @router.message(WaitForText.waiting_for_text)
 async def process_user_text(message: Message, state: FSMContext):
+    await message.answer("Пожалуйста, введите номер аудитории, куда вы хотите прийти:") 
+    await state.clear()
+    await state.set_state(WaitForText.waiting_for_second)
+
+
+@router.message(WaitForText.waiting_for_second)
+async def send_map(message: Message, state: FSMContext):
     user_text = message.text.strip()
 
     try:
