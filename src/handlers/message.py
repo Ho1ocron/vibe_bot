@@ -5,13 +5,13 @@ from aiogram.fsm.context import FSMContext
 from aiogram.filters import(
     Command, 
     CommandStart, 
-    CommandObject
+    CommandObject,
 )
 
 from aiogram.types import(
     Message, 
     InlineKeyboardButton, 
-    InlineKeyboardMarkup
+    InlineKeyboardMarkup,
 )
 import logging
 
@@ -25,8 +25,17 @@ router.message.filter(F.chat.type.in_({ChatType.PRIVATE}),)
 
 @router.message(Command(commands=["start"]))
 async def start(message: Message) -> None:
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="Куда идти?")]+
+            [InlineKeyboardButton(text="Достижения")]+
+            [InlineKeyboardButton(text="Настройки")]
+        ]
+    )
     await message.answer(
         (
-            f"👋 <b>Добро пожаловать!</b> 👋\n\n"
+            f"👋 <b>Привет, дорогой Друг!</b> 👋\n\n"
+            f"Я помогу тебе сориентироваться в новом кампусе ИРИТ-РтФ УрФУ в Новокольцовском.\n"
+            f"Пожалуйста, выбери действие: "
         )
     )
