@@ -37,6 +37,8 @@ TORTOISE_MODELS = ['database']
 
 DB_URL: str # Сделать тут или не тут db_url
 
+CODE = "1234-5678-90QI"
+
 if DEBUG:
     DB_URL = ""
 

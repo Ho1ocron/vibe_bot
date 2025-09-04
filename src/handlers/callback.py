@@ -227,5 +227,5 @@ async def where_to_go(callback: CallbackQuery):
 
 @router.callback_query(F.data == "go")
 async def find_auditory(callback: CallbackQuery, state: FSMContext) -> None:
-    await callback.message.answer("Пожалуйста, введите номер аудитории, около которой вы сейчас находитесь:") 
+    await callback.message.answer("Пожалуйста, введите номер аудитории, около которой вы сейчас находитесь (к примеру Р-1):") 
     await state.set_state(WaitForText.waiting_for_text)
