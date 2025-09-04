@@ -170,6 +170,12 @@ async def where_to_go(callback: CallbackQuery):
             [InlineKeyboardButton(text="Назад", callback_data="backmain")]
         ]
     )
+    await callback.message.edit_text(
+        inline_message_id=callback.inline_message_id,
+        reply_markup=keyboard,
+        text="Ты попал в настройки \n Тут мы можешь ..."
+    )
+# 🟩🟥
 
 
 @router.callback_query(F.data == "ra1")
