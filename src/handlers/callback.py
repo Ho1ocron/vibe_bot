@@ -105,7 +105,42 @@ async def where_to_go(callback: CallbackQuery):
         text="👋 <b>Привет, дорогой Друг!</b> 👋\n \n Я помогу тебе сориентироваться в новом кампусе ИРИТ-РтФ УрФУ в Новокольцовском.\n Пожалуйста, выбери действие: "
     )
 
-@router.callback_query(F.data == "settings")
+@router.callback_query(F.data == "sach")
+async def where_to_go(callback: CallbackQuery):
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+            InlineKeyboardButton(text="🟥 Достижение 1", callback_data="ra1")],
+            [InlineKeyboardButton(text="🟥 Достижение 2", callback_data="ra2")
+            ],
+            [InlineKeyboardButton(text="🟥 Достижение 3", callback_data="ra3")
+            ],
+            [InlineKeyboardButton(text="Назад", callback_data="backset")]
+        ]
+    )
+
+    await callback.message.edit_text(
+        inline_message_id=callback.inline_message_id,
+        reply_markup=keyboard,
+        text="Ты попал в настройки Достижений\n Тут мы можешь включить или выключить разные возможности"
+    )
+@router.callback_query(F.data == "group")
+async def where_to_go(callback: CallbackQuery):
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+            InlineKeyboardButton(text="В главное меню", callback_data="backmain"), 
+            InlineKeyboardButton(text="Назад", callback_data="backset")]
+        ]
+    )
+
+    await callback.message.edit_text(
+        inline_message_id=callback.inline_message_id,
+        reply_markup=keyboard,
+        text="В данный момент эта функция на стадии разработки..."
+    )
+
+@router.callback_query(F.data == "backset")
 async def where_to_go(callback: CallbackQuery):
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
@@ -120,7 +155,52 @@ async def where_to_go(callback: CallbackQuery):
     await callback.message.edit_text(
         inline_message_id=callback.inline_message_id,
         reply_markup=keyboard,
-        text="Ты попал в настройки \n Тут мы можешь ..."
+        text="В данный момент эта функция на стадии разработки..."
+    )
+@router.callback_query(F.data == "ra1")
+async def where_to_go(callback: CallbackQuery):
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+            InlineKeyboardButton(text="В главное меню", callback_data="backmain")],
+            [InlineKeyboardButton(text="Назад", callback_data="backset")]
+        ]
+    )
+
+    await callback.message.edit_text(
+        inline_message_id=callback.inline_message_id,
+        reply_markup=keyboard,
+        text="В данный момент у Вас недостаточно баллов чтобы включить эту функцию"
+    )
+@router.callback_query(F.data == "ra2")
+async def where_to_go(callback: CallbackQuery):
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+            InlineKeyboardButton(text="В главное меню", callback_data="backmain")],
+            [InlineKeyboardButton(text="Назад", callback_data="backset")]
+        ]
+    )
+
+    await callback.message.edit_text(
+        inline_message_id=callback.inline_message_id,
+        reply_markup=keyboard,
+        text="В данный момент у Вас недостаточно баллов чтобы включить эту функцию"
+    )
+@router.callback_query(F.data == "ra3")
+async def where_to_go(callback: CallbackQuery):
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+            InlineKeyboardButton(text="В главное меню", callback_data="backmain")],
+            [InlineKeyboardButton(text="Назад", callback_data="backset")]
+        ]
+    )
+
+    await callback.message.edit_text(
+        inline_message_id=callback.inline_message_id,
+        reply_markup=keyboard,
+        text="В данный момент у Вас недостаточно баллов чтобы включить эту функцию"
     )
 
 
