@@ -4,14 +4,14 @@ python3 -m venv .venv
 . ./.venv/bin/activate
 ```
 ---
-Redis для линукса
-```
-sudo apt update && sudo apt install redis-server -y
-sudo systemctl enable redis-server
-sudo systemctl start redis-server
-```
----
 Установка библиотек
 ```
 pip install -r requirements.txt
+```
+---
+Создаем файл ```.env``` и туда копируем все из ```.env.example```, заменяя токен на токен бота
+---
+Запуск бота:
+```
+python ./src/main.py
 ```
