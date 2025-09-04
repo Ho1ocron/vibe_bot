@@ -26,13 +26,13 @@ router.message.filter(F.chat.type.in_({ChatType.PRIVATE}),)
 @router.message(Command(commands=["start"]))
 async def start(message: Message) -> None:
 
-    keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [
-            InlineKeyboardButton(text="Куда идти?", callback_data="go"),
-            InlineKeyboardButton(text="Достижения", callback_data="achievements"),
-            InlineKeyboardButton(text="Настройки", callback_data="settings")
-        ]
-    ])
+    keyboard = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text="Куда идти?", callback_data="go")],
+        [InlineKeyboardButton(text="Достижения", callback_data="achievements")],
+        [InlineKeyboardButton(text="Настройки", callback_data="settings")]
+    ]
+)
     
     await message.answer(
         (
