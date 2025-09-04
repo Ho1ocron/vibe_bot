@@ -1,7 +1,11 @@
-Python virtual environment
+Python virtual environment для Линукс:
 ```
 python3 -m venv .venv
 . ./.venv/bin/activate
+```
+Для Windows:
+```
+./.venv/Scripts/activate
 ```
 ---
 Установка библиотек
