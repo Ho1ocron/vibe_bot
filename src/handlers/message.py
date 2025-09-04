@@ -47,7 +47,7 @@ async def start(message: Message) -> None:
 
 @router.message(WaitForText.waiting_for_text)
 async def process_user_text(message: Message, state: FSMContext):
-    await message.answer("Пожалуйста, введите номер аудитории, куда вы хотите прийти:") 
+    await message.answer("Пожалуйста, введите номер аудитории, куда вы хотите прийти (к примеру Р-1):") 
     await state.clear()
     await state.set_state(WaitForText.waiting_for_second)
 
